@@ -23,7 +23,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -37,16 +37,31 @@
                         <StackPanel>
                             <Button Content="Profile"/>
                             <Button Content="Change user"/>
+                            <Button Content="Manage users"/>
                             <Button Content="Log out"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
-                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center">Doctor Cash</TextBlock>
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center">Doctor Cash</TextBlock>
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center">Section</TextBlock>
                 </DockPanel>
             </materialDesign:ColorZone>
         </DockPanel>
         <DockPanel Grid.Row="1">
-            <materialDesign:ColorZone Mode="Dark" DockPanel.Dock="Left">
-                
+            <materialDesign:ColorZone Mode="Dark" DockPanel.Dock="Left" VerticalAlignment="Stretch">
+                <StackPanel>
+                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                        <materialDesign:PackIcon Kind="Home" Height="Auto" Width="Auto"/>
+                    </Button>
+                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                        <materialDesign:PackIcon Kind="FileChart" Height="Auto" Width="Auto"/>
+                    </Button>
+                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                        <materialDesign:PackIcon Kind="Settings" Height="Auto" Width="Auto"/>
+                    </Button>
+                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                        <materialDesign:PackIcon Kind="HelpCircleOutline" Height="Auto" Width="Auto"/>
+                    </Button>
+                </StackPanel>
             </materialDesign:ColorZone>
         </DockPanel>
     </Grid>
