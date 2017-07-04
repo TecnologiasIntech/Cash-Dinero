@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
 
 namespace CashDinero
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Interaction logic for Dialogs.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Dialogs : UserControl
     {
-        public MainWindow()
+        public Dialogs()
         {
             InitializeComponent();
-        }
-
-        private void LoadView(object sender, RoutedEventArgs e)
-        {
-            Console.Write("ola");
         }
     }
 }

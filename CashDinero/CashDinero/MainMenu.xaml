@@ -21,48 +21,64 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <DockPanel Grid.ColumnSpan="2">
-            <materialDesign:ColorZone Padding="16" Mode="PrimaryMid" DockPanel.Dock="Top" Height="70">
-                <DockPanel>
-                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
-                        <StackPanel>
-                            <Button Content="Profile"/>
-                            <Button Content="Change user"/>
-                            <Button Content="Manage users"/>
-                            <Button Content="Log out"/>
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center">Doctor Cash</TextBlock>
-                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center">Section</TextBlock>
-                </DockPanel>
-            </materialDesign:ColorZone>
-        </DockPanel>
-        <DockPanel Grid.Row="1">
-            <materialDesign:ColorZone Mode="Dark" DockPanel.Dock="Left" VerticalAlignment="Stretch">
-                <StackPanel>
-                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
-                        <materialDesign:PackIcon Kind="Home" Height="Auto" Width="Auto"/>
-                    </Button>
-                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
-                        <materialDesign:PackIcon Kind="FileChart" Height="Auto" Width="Auto"/>
-                    </Button>
-                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
-                        <materialDesign:PackIcon Kind="Settings" Height="Auto" Width="Auto"/>
-                    </Button>
-                    <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
-                        <materialDesign:PackIcon Kind="HelpCircleOutline" Height="Auto" Width="Auto"/>
-                    </Button>
-                </StackPanel>
-            </materialDesign:ColorZone>
-        </DockPanel>
-    </Grid>
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.ColumnSpan="2">
+                <materialDesign:ColorZone Padding="16" Mode="PrimaryMid" DockPanel.Dock="Top" Height="70">
+                    <DockPanel>
+                        <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges">
+                            <StackPanel>
+                                <Button Content="Profile"/>
+                                <Button Content="Change user"/>
+                                <Button Content="Manage users"/>
+                                <Button Content="Log out"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center">Doctor Cash</TextBlock>
+                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center">Section</TextBlock>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+            </DockPanel>
+            <DockPanel Grid.Row="1">
+                <materialDesign:ColorZone Mode="Dark" DockPanel.Dock="Left" VerticalAlignment="Stretch">
+                    <StackPanel>
+                        <ListBox x:Name="OptionList" SelectedIndex="0">
+                            <ListBoxItem Padding="0">
+                                <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                                    <materialDesign:PackIcon Kind="Home" Height="Auto" Width="Auto"/>
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="0">
+                                <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                                    <materialDesign:PackIcon Kind="FileChart" Height="Auto" Width="Auto"/>
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="0">
+                                <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60" Click="LoadView">
+                                    <materialDesign:PackIcon Kind="Settings" Height="Auto" Width="Auto"/>
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="0">
+                                <Button Foreground="White" Style="{StaticResource MaterialDesignFlatButton}" Padding="10" Height="60">
+                                    <materialDesign:PackIcon Kind="HelpCircleOutline" Height="Auto" Width="Auto"/>
+                                </Button>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </DockPanel>
+            <DockPanel>
+                <ContentControl Content="{Binding ElementName=OptionList, Path=SelectedItem.Content}"/>
+            </DockPanel>
+            <materialDesign:Snackbar x:Name="MainSnackbar"/>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>
